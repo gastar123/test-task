@@ -1,6 +1,6 @@
-package com.mcb.creditfactory.service.car;
+package com.mcb.creditfactory.service.airplane;
 
-import com.mcb.creditfactory.dto.CarDto;
+import com.mcb.creditfactory.dto.AirplaneDto;
 import com.mcb.creditfactory.external.CollateralObject;
 import com.mcb.creditfactory.external.CollateralType;
 import com.mcb.creditfactory.model.Estimate;
@@ -12,12 +12,13 @@ import java.util.Comparator;
 import java.util.List;
 
 @AllArgsConstructor
-public class CarAdapter implements CollateralObject {
-    private CarDto car;
+public class AirplaneAdapter implements CollateralObject {
+
+    private AirplaneDto airplane;
 
     @Override
     public BigDecimal getValue() {
-        List<Estimate> estimates = car.getEstimateList();
+        List<Estimate> estimates = airplane.getEstimateList();
         return estimates != null ? estimates.stream()
                 .max(Comparator.comparing(Estimate::getDate))
                 .map(Estimate::getValue)
@@ -27,12 +28,12 @@ public class CarAdapter implements CollateralObject {
 
     @Override
     public Short getYear() {
-        return car.getYear();
+        return airplane.getYear();
     }
 
     @Override
     public LocalDate getDate() {
-        List<Estimate> estimates = car.getEstimateList();
+        List<Estimate> estimates = airplane.getEstimateList();
         return estimates != null ? estimates.stream()
                 .max(Comparator.comparing(Estimate::getDate))
                 .map(Estimate::getDate)
@@ -42,6 +43,7 @@ public class CarAdapter implements CollateralObject {
 
     @Override
     public CollateralType getType() {
-        return CollateralType.CAR;
+        return CollateralType.AIRPLANE;
     }
+
 }

@@ -40,7 +40,7 @@ public class CarServiceImpl implements CarService {
                 dto.getModel(),
                 dto.getPower(),
                 dto.getYear(),
-                dto.getValue()
+                dto.getEstimateList()
         );
     }
 
@@ -52,7 +52,7 @@ public class CarServiceImpl implements CarService {
                 car.getModel(),
                 car.getPower(),
                 car.getYear(),
-                car.getValue()
+                car.getEstimateList()
         );
     }
 
